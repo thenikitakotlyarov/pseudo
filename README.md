@@ -43,7 +43,7 @@ Examples:
 Input:
 ```
 $
-|%python3>psuedo
+|%python3>pseudo
 ||print("Hello, world!")
 ```
 **Pseudo** midstate:
@@ -180,7 +180,7 @@ a _1 is a _2 takes _3a
 | gives this _1
 ```
 : Declares a class of name `_1` with typing `_2`, that accepts variable `_3a` and assigns it to the object's `_3b`.
-Returns this object when instantiated
+Returns this object when instantiated. As seen in this example, verbs are in present tense, stating that it is to be done when called. This tensing is only used when verbs are used inside of function method or class scopes.
 
 ```
 a _1 takes _2
@@ -188,7 +188,7 @@ a _1 takes _2
 
 _3 _1ed
 ```
-: Declares a function named _1 that accepts variable _2 and prints it. _1 is then called on the value of _3. functions are called with the past-tense suffix `ed`.
+: Declares a function of name `_1` that accepts variable `_2` and prints it. `_1` is then called on the value of `_3`. functions are called with the past-tense suffix `ed`. Due to the Subject-Object-Verb ordering, parameters are given to functions in that order when called. This implementation can be seen in the use of `asked`, or, see the following examples for further clarification. All functions and methods are called in this manner.
 
 ### Examples:
 #### Example 1: simple echo program
