@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/psuedo.dir/src/interpreter.cpp.o CMakeFiles/psuedo.dir/src/lexer.cpp.o CMakeFiles/psuedo.dir/src/main.cpp.o CMakeFiles/psuedo.dir/src/parser.cpp.o -o psuedo 
