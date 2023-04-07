@@ -14,7 +14,7 @@ ___
 ## 1. Key Symbols
 The following key symbols are used in **Pseudo**:
 
-`|`:  Denotes lines of code and scope.  
+`|`:  Denotes scope of blocks of code.  
 > Vertically aligned `|` characters indicate scope.  
 > Can be stacked horizontally to indicate nesting.  
   
@@ -34,7 +34,8 @@ The following key symbols are used in **Pseudo**:
 ___
 
 ## 2. Scoping
-Scopes are denoted by vertically aligned `|` characters. Whitespace between pipes is used only for alignment. Decorators can be stacked in scope to pipeline code across languages.
+Block scopes are denoted by vertically aligned `|` characters. Whitespace between pipes is used only for alignment. Decorators can be stacked in scope to pipeline code across languages.  
+Expression scopes are denoted by parenthesis blocks, opened with `(` and closed with `)`. Expression scopes can be nested, and will be passed into usage first, then evaluated from the inner-most out.
 
 Examples:
 
@@ -57,15 +58,16 @@ Hello, world!
 Input:
 ```
 #python3
-| say "Hello, World!"
+| say "The number is ", ( 1 + 1 )
 ```
 Output:
 ```
-print("Hello, World!")
+print(f"The number is {( 1 + 1)}")
 ```
 ___
 
 ## 3. Grammar and Language Abilities
+**Pseudo** uses a natural language based grammar, in the Subject Object Verb form.
 **Pseudo** supports the following language constructs and abilities:
 
 ### 3.1 Variables
@@ -99,7 +101,7 @@ ask
 : Built-in input function that gets user input
 
 ```
-the _1 is asked _2
+the _1 is _2 asked
 ```
 : Requests user input with the status message `_2` and sets the variable `_1` to its value
 
@@ -109,6 +111,10 @@ the _1 is asked _2
 say _1
 ```
 : Outputs the contents of the variable `_1`
+```
+say _1, _2, _3
+```
+: Outputs the concatenation of the variables `_1`, `_2`, and `_3`.
 
 ### 3.4 Arithmetic Operations
 #### Basic arithmetic such as addition, subtraction, multiplication, and division
@@ -136,10 +142,15 @@ _1 is a _2
 ### 3.6 Loops
 #### for and while loops
 ```
-for _1
-| _2
+for _1 from _2
+| _3
 ```
-: Executes scoped code `_2` for each iteration in `_1`.
+: Executes scoped code `_3` for each iteration in `_2` as the ephemeral variable `_1`.
+```
+for _1 from _2 to _3
+| _4
+```
+: Executes scoped code `_4` for each iteration in the range `_2` to `_3` as the ephemeral variable `_1`.
 
 ```
 while _1
@@ -177,9 +188,10 @@ a _1 takes _2
 
 _3 _1ed
 ```
-: Declares a function named _1 that accepts variable _2 and prints it. _1 is then called on the value of _3
+: Declares a function named _1 that accepts variable _2 and prints it. _1 is then called on the value of _3. functions are called with the past-tense suffix `ed`.
 
-### Example:
+### Examples:
+#### Example 1: simple echo program
 ```
 a echo takes variable
 | says variable
@@ -187,4 +199,18 @@ a echo takes variable
 "echo!" echoed
 ```
 This program outputs "echo!" to the screen with no return. 
+
+#### Example 2: factorial:
+```
+a factorial takes n
+| if n is 0
+|| gives 1
+| gives n times ( n minus 1 ) factorialed
+
+
+the num is "Enter a number: " asked
+the result is num factorialed
+say "Factorial of ", num, " is ", result
+```
+This program outputs the factorial of the inputted number in the form of the statement "Factorial of _number is _result"
 
